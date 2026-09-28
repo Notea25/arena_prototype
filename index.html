@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arena — прототип</title>
+  <style>
+    :root {
+      --bg: #101014;
+      --panel: #17171e;
+      --line: #23232f;
+      --text: #f2f2f5;
+      --muted: #8b8b9a;
+      --accent: #fd1818;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    aside {
+      overflow-y: auto;
+      padding: 20px 16px 40px;
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+    }
+    aside h1 { margin: 0 0 4px; font-size: 18px; }
+    aside p { margin: 0 0 16px; color: var(--muted); font-size: 12px; }
+    aside h2 {
+      margin: 20px 0 6px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    li a small { display: block; color: var(--muted); font-size: 11px; }
+    li a:hover { background: var(--line); }
+    li a.active { background: var(--accent); }
+    li a.active small { color: #fff; }
+    main { display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .bar button {
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .bar button.active { border-color: var(--accent); color: var(--accent); }
+    .bar a { margin-left: auto; color: var(--muted); }
+    .stage { overflow: auto; display: flex; justify-content: center; background: #0a0a0d; }
+    iframe { border: 0; height: 100%; min-height: 100%; background: #101014; }
+  </style>
+</head>
+<body>
+  <aside>
+    <h1>Arena — прототип</h1>
+    <p>Кликабельная копия arena-front на демо-данных. Стили: <code>css/</code>, экраны: <code>pages/</code>.</p>
+    <h2>Guest</h2>
+<ul>
+<li><a href="pages/home.html" data-screen="home">Home<small>/</small></a></li>
+<li><a href="pages/fans.html" data-screen="fans">For fans<small>/fans</small></a></li>
+<li><a href="pages/for-clubs.html" data-screen="for-clubs">For clubs<small>/for-clubs</small></a></li>
+<li><a href="pages/join.html" data-screen="join">Join<small>/join</small></a></li>
+<li><a href="pages/tasks.html" data-screen="tasks">Tasks<small>/tasks</small></a></li>
+<li><a href="pages/task-watch.html" data-screen="task-watch">Watch task<small>/tasks/watch/09916049-5de9-4cfe-9888-741…</small></a></li>
+<li><a href="pages/task-share.html" data-screen="task-share">Share task<small>/tasks/share/ea0f87f0-239c-4582-9942-5ec…</small></a></li>
+<li><a href="pages/task-action.html" data-screen="task-action">Action task<small>/tasks/action/3239cdd4-d171-43dd-a335-52…</small></a></li>
+<li><a href="pages/leaderboard.html" data-screen="leaderboard">Leaderboard<small>/leaderboard</small></a></li>
+<li><a href="pages/news.html" data-screen="news">News<small>/news</small></a></li>
+<li><a href="pages/news-article.html" data-screen="news-article">News article<small>/news/b575bba2-d90d-47bc-b752-df9183b398…</small></a></li>
+<li><a href="pages/club.html" data-screen="club">Club page<small>/clubs/06b76e14-7610-42b6-9293-7dc16eeb7…</small></a></li>
+<li><a href="pages/maintenance.html" data-screen="maintenance">Maintenance<small>/maintenance</small></a></li>
+<li><a href="pages/not-found.html" data-screen="not-found">Page not found<small>/this-page-does-not-exist</small></a></li>
+</ul>
+<h2>Fan</h2>
+<ul>
+<li><a href="pages/home-fan.html" data-screen="home-fan">Home<small>/</small></a></li>
+<li><a href="pages/tasks-fan.html" data-screen="tasks-fan">Tasks<small>/tasks</small></a></li>
+<li><a href="pages/task-watch-fan.html" data-screen="task-watch-fan">Watch task<small>/tasks/watch/b2ed4381-b544-4436-9fca-5b2…</small></a></li>
+<li><a href="pages/task-watch-done.html" data-screen="task-watch-done">Watch task — completed<small>/tasks/watch/09916049-5de9-4cfe-9888-741…</small></a></li>
+<li><a href="pages/task-share-reserved.html" data-screen="task-share-reserved">Share task — reserved<small>/tasks/share/45d29a01-f559-4694-bc6b-0c6…</small></a></li>
+<li><a href="pages/task-share-moderation.html" data-screen="task-share-moderation">Share task — in moderation<small>/tasks/share/0f27fb94-8cba-49b7-bb0f-a15…</small></a></li>
+<li><a href="pages/task-share-rejected.html" data-screen="task-share-rejected">Share task — rejected<small>/tasks/share/983aecf3-5359-444b-ae24-afe…</small></a></li>
+<li><a href="pages/task-share-progress.html" data-screen="task-share-progress">Share task — collecting views<small>/tasks/share/ea0f87f0-239c-4582-9942-5ec…</small></a></li>
+<li><a href="pages/task-action-fan.html" data-screen="task-action-fan">Action task — verifying<small>/tasks/action/3239cdd4-d171-43dd-a335-52…</small></a></li>
+<li><a href="pages/profile.html" data-screen="profile">Profile<small>/profile</small></a></li>
+<li><a href="pages/profile-edit.html" data-screen="profile-edit">Edit profile<small>/profile/edit</small></a></li>
+<li><a href="pages/leaderboard-fan.html" data-screen="leaderboard-fan">Leaderboard<small>/leaderboard</small></a></li>
+</ul>
+<h2>Club</h2>
+<ul>
+<li><a href="pages/club-dashboard.html" data-screen="club-dashboard">Club dashboard<small>/clubs/ec6988dd-d5fd-4b0b-9c5e-b348b2e22…</small></a></li>
+<li><a href="pages/club-register.html" data-screen="club-register">Club registration<small>/clubs/register</small></a></li>
+<li><a href="pages/club-moderation.html" data-screen="club-moderation">Club in moderation<small>/clubs/moderation</small></a></li>
+</ul>
+<h2>Agent</h2>
+<ul>
+<li><a href="pages/agent-profile.html" data-screen="agent-profile">Agent profile<small>/profile</small></a></li>
+</ul>
+<h2>Advertiser</h2>
+<ul>
+<li><a href="pages/cabinet.html" data-screen="cabinet">Cabinet<small>/cabinet</small></a></li>
+<li><a href="pages/cabinet-campaigns.html" data-screen="cabinet-campaigns">Campaigns<small>/cabinet/campaigns</small></a></li>
+<li><a href="pages/cabinet-new.html" data-screen="cabinet-new">New campaign<small>/cabinet/campaigns/new</small></a></li>
+</ul>
+    <h2>Модалки и меню</h2>
+    <ul>
+<li><a href="pages/home.html#open=login">guest · login</a></li>
+<li><a href="pages/home.html#open=signup">guest · signup</a></li>
+<li><a href="pages/home.html#open=signup-role">guest · signup-role</a></li>
+<li><a href="pages/home.html#open=signup-details">guest · signup-details</a></li>
+<li><a href="pages/home.html#open=signup-code">guest · signup-code</a></li>
+<li><a href="pages/home.html#open=signup-success">guest · signup-success</a></li>
+<li><a href="pages/home.html#open=signup-details-club">guest · signup-details-club</a></li>
+<li><a href="pages/home.html#open=lang">guest · lang</a></li>
+<li><a href="pages/home.html#open=menu">guest · menu</a></li>
+<li><a href="pages/home-fan.html#open=notifications">fan · notifications</a></li>
+<li><a href="pages/home-fan.html#open=profile-menu">fan · profile-menu</a></li>
+<li><a href="pages/home-fan.html#open=lang">fan · lang</a></li>
+<li><a href="pages/home-fan.html#open=profile-menu-mobile">fan · profile-menu-mobile</a></li>
+<li><a href="pages/club-dashboard.html#open=notifications">club · notifications</a></li>
+<li><a href="pages/club-dashboard.html#open=profile-menu">club · profile-menu</a></li>
+    </ul>
+  </aside>
+  <main>
+    <div class="bar">
+      <button data-width="375">375 · телефон</button>
+      <button data-width="768">768 · планшет</button>
+      <button data-width="1024">1024</button>
+      <button data-width="1440" class="active">1440 · десктоп</button>
+      <button data-width="100%">по ширине окна</button>
+      <a id="open-direct" href="#" target="_blank">открыть отдельно ↗</a>
+    </div>
+    <div class="stage"><iframe id="screen" name="screen" title="Экран прототипа"></iframe></div>
+  </main>
+  <script>
+    const frame = document.getElementById('screen')
+    const direct = document.getElementById('open-direct')
+    const links = [...document.querySelectorAll('aside a')]
+    function show(href, link) {
+      frame.src = href
+      direct.href = href
+      links.forEach(l => l.classList.toggle('active', l === link))
+      history.replaceState(null, '', '#' + href)
+    }
+    links.forEach(l => l.addEventListener('click', e => {
+      e.preventDefault()
+      show(l.getAttribute('href'), l)
+    }))
+    document.querySelectorAll('.bar button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.bar button').forEach(x => x.classList.toggle('active', x === b))
+      frame.style.width = b.dataset.width === '100%' ? '100%' : b.dataset.width + 'px'
+    }))
+    frame.style.width = '1440px'
+    const start = location.hash.slice(1) || links[0].getAttribute('href')
+    show(start, links.find(l => l.getAttribute('href') === start))
+  </script>
+</body>
+</html>
